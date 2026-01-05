@@ -26,7 +26,7 @@ export async function updateProfile(formData: FormData) {
     // Validate
     const validation = profileSchema.safeParse({ fullName });
     if (!validation.success) {
-        return { error: validation.error.errors[0].message };
+        return { error: validation.error.issues[0].message };
     }
 
     const updates: any = {
