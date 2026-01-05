@@ -10,6 +10,12 @@ frontend:
     build:
       commands:
         - pnpm run build
+        # Remove SWC binaries not needed at runtime (reduces artifact size significantly)
+        - rm -rf node_modules/@next/swc-linux-x64-gnu
+        - rm -rf node_modules/@next/swc-linux-x64-musl  
+        - rm -rf node_modules/@swc
+        - rm -rf node_modules/esbuild
+        - rm -rf .next/cache
   artifacts:
     baseDirectory: .next
     files:
@@ -17,4 +23,3 @@ frontend:
   cache:
     paths:
       - .pnpm-store/**/*
-      - node_modules/**/*
