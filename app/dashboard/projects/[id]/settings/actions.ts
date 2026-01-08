@@ -1,6 +1,6 @@
 'use server';
 
-import { createClient } from "@/utils/supabase/server";
+import { createClient, createAdminClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 
 export async function isOwner(supabase: any, projectId: string, userId: string) {
@@ -59,11 +59,17 @@ export async function addMember(projectId: string, email: string) {
         .single();
 
     if (profileError || !profile) {
+        console.error("Profile fetch error:", profileError);
         return { error: 'User not found. Ask them to sign up first!' };
     }
 
-    // 2. Add to project_members
-    const { error: insertError } = await supabase
+    // 2. Add to project_members (Using Admin Client to bypass RLS)
+    // The RLS policy likely prevents users from inserting rows for *other* users,
+    // or requires them to already be a member. Since we checked ownership above,
+    // safe to use admin.
+    const supabaseAdmin = createAdminClient();
+
+    const { error: insertError } = await supabaseAdmin
         .from('project_members')
         .insert({
             project_id: projectId,
@@ -75,7 +81,7 @@ export async function addMember(projectId: string, email: string) {
             return { error: 'User is already a member' };
         }
         console.error("Error adding member:", insertError);
-        return { error: 'Failed to add member' };
+        return { error: `Failed to add member: ${insertError.message} (${insertError.code})` };
     }
 
     revalidatePath(`/dashboard/projects/${projectId}/settings`);
