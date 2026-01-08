@@ -53,10 +53,10 @@ export default async function ProjectsPage() {
             {/* Header */}
             <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
+                    <h1 className="text-3xl font-bold text-slate-900 dark:text-white tracking-tight">
                         Projects & Workspaces
                     </h1>
-                    <p className="text-slate-500 mt-1">
+                    <p className="text-slate-500 dark:text-slate-400 mt-1">
                         Manage your collaborative spaces
                     </p>
                 </div>

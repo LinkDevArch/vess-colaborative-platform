@@ -71,7 +71,7 @@ export default async function TasksPage(props: {
     }
 
     return (
-        <div className="px-4 md:px-6 h-[calc(100vh-100px)] flex flex-col relative">
+        <div className="px-4 md:px-6 flex flex-col relative min-h-full pb-20">
             {selectedTask && (
                 <TaskDetailsModal
                     task={selectedTask}
@@ -81,12 +81,14 @@ export default async function TasksPage(props: {
                 />
             )}
 
-            <div className="flex items-center justify-between mb-6 shrink-0">
-                <div className="flex items-center gap-4">
-                    <h2 className="text-2xl font-bold text-slate-800">Tasks</h2>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 shrink-0">
+                <div className="flex items-center justify-between sm:justify-start gap-4 w-full sm:w-auto">
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Tasks</h2>
                     <ViewToggle baseUrl={`/dashboard/projects/${id}/tasks`} />
                 </div>
-                <CreateTaskModal projectId={id} members={members} />
+                <div className="w-full sm:w-auto">
+                    <CreateTaskModal projectId={id} members={members} />
+                </div>
             </div>
 
             <div className="flex-1 min-h-0">

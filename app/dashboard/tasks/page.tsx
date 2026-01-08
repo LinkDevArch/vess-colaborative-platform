@@ -91,7 +91,7 @@ export default async function MyTasksPage(props: {
 
             <div className="flex items-center justify-between mb-6 shrink-0 pt-6">
                 <div className="flex items-center gap-4">
-                    <h2 className="text-2xl font-bold text-slate-800">My Tasks</h2>
+                    <h2 className="text-2xl font-bold text-slate-800 dark:text-white">My Tasks</h2>
                     <ViewToggle baseUrl="/dashboard/tasks" />
                 </div>
             </div>

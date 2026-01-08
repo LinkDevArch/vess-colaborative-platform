@@ -18,7 +18,7 @@ export default async function FilesPage({ params }: { params: Promise<{ id: stri
     return (
         <div className="px-4 md:px-6">
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-800">Files</h2>
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Files</h2>
             </div>
 
             {/* Upload Area */}

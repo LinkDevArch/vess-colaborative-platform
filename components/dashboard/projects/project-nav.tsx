@@ -25,7 +25,7 @@ export function ProjectNav({ projectId, isOwner }: ProjectNavProps) {
     }
 
     return (
-        <div className="flex border-b border-slate-200 mb-8">
+        <div className="flex border-b border-slate-200 mb-8 overflow-x-auto no-scrollbar">
             {tabs.map((tab) => {
                 const isActive = pathname.startsWith(tab.href);
                 return (
@@ -33,10 +33,10 @@ export function ProjectNav({ projectId, isOwner }: ProjectNavProps) {
                         key={tab.name}
                         href={tab.href}
                         className={`
-              flex items-center gap-2 px-6 py-4 border-b-2 transition-all font-medium text-sm
-              ${isActive
-                                ? 'border-[#3B8E8E] text-[#3B8E8E] bg-teal-50/50'
-                                : 'border-transparent text-slate-500 hover:text-slate-700 hover:bg-slate-50'
+              flex items-center gap-2 px-3 sm:px-6 py-3 sm:py-4 border-b-2 transition-all font-medium text-xs sm:text-sm whitespace-nowrap
+                            ${isActive
+                                ? 'border-[#3B8E8E] text-[#3B8E8E] bg-teal-50/50 dark:bg-[#3B8E8E]/10'
+                                : 'border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800'
                             }
             `}
                     >

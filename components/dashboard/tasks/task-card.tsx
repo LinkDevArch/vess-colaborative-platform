@@ -74,17 +74,17 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
     const statusConfig = {
         todo: {
             label: 'To Do',
-            color: 'bg-slate-100 text-slate-600 border-slate-200',
+            color: 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700',
             icon: Circle
         },
         in_progress: {
             label: 'In Progress',
-            color: 'bg-blue-50 text-blue-600 border-blue-200',
+            color: 'bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-900/30',
             icon: Clock
         },
         done: {
             label: 'Done',
-            color: 'bg-green-50 text-green-600 border-green-200',
+            color: 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border-green-200 dark:border-green-900/30',
             icon: CheckCircle
         },
     };
@@ -94,7 +94,7 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
     return (
         <article
             onClick={onClick}
-            className="bg-white p-4 rounded-lg border border-slate-200/60 shadow-sm hover:shadow-md transition-all group relative cursor-pointer"
+            className="bg-white dark:bg-slate-900 p-3 sm:p-4 rounded-lg border border-slate-200/60 dark:border-slate-800 shadow-sm hover:shadow-md transition-all group relative cursor-pointer"
         >
 
             {/* Header & Status */}
@@ -106,7 +106,7 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
                             setShowStatusMenu(!showStatusMenu);
                         }}
                         className={`
-                            px-2.5 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 transition-colors
+                            px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold border flex items-center gap-1.5 transition-colors
                             ${statusConfig[currentStatus].color} hover:opacity-80
                         `}
                     >
@@ -116,7 +116,7 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
 
                     {/* Status Dropdown */}
                     {showStatusMenu && (
-                        <div className="absolute top-full left-0 mt-1 w-40 bg-white rounded-xl shadow-xl border border-slate-100 z-20 py-1 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                        <div className="absolute top-full left-0 mt-1 w-40 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-50 py-1 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
                             {(Object.keys(statusConfig) as Array<keyof typeof statusConfig>).map((status) => {
                                 const Icon = statusConfig[status].icon;
                                 return (
@@ -124,8 +124,8 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
                                         key={status}
                                         onClick={() => handleStatusChange(status)}
                                         className={`
-                                            w-full text-left px-3 py-2 text-sm flex items-center gap-2 hover:bg-slate-50
-                                            ${currentStatus === status ? 'text-[#3B8E8E] font-medium bg-teal-50' : 'text-slate-600'}
+                                            w-full text-left px-3 py-2 text-sm flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700/50
+                                            ${currentStatus === status ? 'text-[#3B8E8E] font-medium bg-teal-50 dark:bg-teal-900/10' : 'text-slate-600 dark:text-slate-300'}
                                         `}
                                     >
                                         <Icon size={14} />
@@ -144,17 +144,17 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
                             e.stopPropagation();
                             setShowActionsMenu(!showActionsMenu);
                         }}
-                        className="text-slate-300 hover:text-slate-600 p-1 rounded-md transition-colors"
+                        className="text-slate-300 hover:text-slate-600 dark:text-slate-600 dark:hover:text-slate-300 p-1 rounded-md transition-colors"
                     >
                         <MoreVertical size={16} />
                     </button>
 
                     {/* Actions Dropdown */}
                     {showActionsMenu && (
-                        <div className="absolute top-full right-0 mt-1 w-32 bg-white rounded-xl shadow-xl border border-slate-100 z-20 py-1 overflow-hidden">
+                        <div className="absolute top-full right-0 mt-1 w-32 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 z-50 py-1 overflow-hidden">
                             <button
                                 onClick={handleDelete}
-                                className="w-full text-left px-3 py-2 text-sm flex items-center gap-2 text-red-600 hover:bg-red-50"
+                                className="w-full text-left px-3 py-2 text-sm flex items-center gap-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20"
                             >
                                 <Trash2 size={14} />
                                 Delete
@@ -165,19 +165,19 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
             </div>
 
             {/* Task Content */}
-            <h3 className="font-semibold text-slate-800 mb-2 group-hover:text-[#3B8E8E] transition-colors">
+            <h3 className="font-semibold text-slate-800 dark:text-slate-100 text-sm sm:text-base mb-2 group-hover:text-[#3B8E8E] dark:group-hover:text-[#3B8E8E] transition-colors wrap-break-word line-clamp-2">
                 {task.title}
             </h3>
 
             {task.description && (
-                <p className="text-slate-500 text-sm mb-4 line-clamp-2">
+                <p className="text-slate-500 dark:text-slate-400 text-xs sm:text-sm mb-3 sm:mb-4 line-clamp-2">
                     {task.description}
                 </p>
             )}
 
             {/* Footer */}
-            <div className="flex items-center justify-between pt-2 border-t border-slate-50">
-                <div className="flex items-center text-slate-400 text-xs">
+            <div className="flex items-center justify-between pt-2 border-t border-slate-50 dark:border-slate-800">
+                <div className="flex items-center text-slate-400 dark:text-slate-500 text-[10px] sm:text-xs">
                     {task.due_date && (
                         <>
                             <Calendar size={12} className="mr-1" />
@@ -189,22 +189,22 @@ export function TaskCard({ task, onClick }: TaskCardProps) {
                 <div className="flex items-center gap-2">
                     {task.assignee ? (
                         <>
-                            <span className="text-xs text-slate-400 max-w-[80px] truncate hidden sm:inline">
+                            <span className="text-xs text-slate-400 dark:text-slate-500 max-w-[80px] truncate hidden sm:inline">
                                 {task.assignee.full_name}
                             </span>
-                            <div className="w-6 h-6 rounded-full bg-slate-200 overflow-hidden shrink-0 border border-white shadow-sm" title={task.assignee.full_name || 'Assignee'}>
+                            <div className="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0 border border-white dark:border-slate-600 shadow-sm" title={task.assignee.full_name || 'Assignee'}>
                                 {task.assignee.avatar_url ? (
                                     <img src={task.assignee.avatar_url} alt="Assignee" className="w-full h-full object-cover" />
                                 ) : (
-                                    <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-slate-500">
+                                    <div className="w-full h-full flex items-center justify-center text-[10px] font-bold text-slate-500 dark:text-slate-300">
                                         {task.assignee.full_name?.[0]}
                                     </div>
                                 )}
                             </div>
                         </>
                     ) : (
-                        <span className="text-xs text-slate-400 italic flex items-center gap-1">
-                            <UserIcon size={12} /> Unassigned
+                        <span className="text-[10px] sm:text-xs text-slate-400 dark:text-slate-500 italic flex items-center gap-1">
+                            <UserIcon size={12} /> <span className="hidden sm:inline">Unassigned</span>
                         </span>
                     )}
                 </div>

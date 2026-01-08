@@ -48,22 +48,22 @@ export function TaskList({ tasks, currentUserId, hideFilter = false }: TaskListP
         <div>
             {/* Filter Controls */}
             {!hideFilter && (
-                <div className="flex items-center justify-between mb-6">
-                    <div className="flex bg-slate-100 p-1 rounded-lg">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6">
+                    <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-lg w-full sm:w-auto transition-colors">
                         <button
                             onClick={() => setFilter('all')}
-                            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${filter === 'all' ? 'bg-white text-slate-800 shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-md text-sm font-medium transition-all ${filter === 'all' ? 'bg-white dark:bg-slate-700 text-slate-800 dark:text-white shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}
                         >
                             All Tasks
                         </button>
                         <button
                             onClick={() => setFilter('mine')}
-                            className={`px-4 py-1.5 rounded-md text-sm font-medium transition-all ${filter === 'mine' ? 'bg-white text-[#3B8E8E] shadow-sm' : 'text-slate-500 hover:text-slate-700'}`}
+                            className={`flex-1 sm:flex-none px-4 py-1.5 rounded-md text-sm font-medium transition-all ${filter === 'mine' ? 'bg-white dark:bg-slate-700 text-[#3B8E8E] shadow-sm' : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-300'}`}
                         >
                             My Tasks
                         </button>
                     </div>
-                    <div className="text-sm text-slate-400">
+                    <div className="text-sm text-slate-400 dark:text-slate-500">
                         {filteredTasks.length} {filteredTasks.length === 1 ? 'task' : 'tasks'}
                     </div>
                 </div>
@@ -71,12 +71,12 @@ export function TaskList({ tasks, currentUserId, hideFilter = false }: TaskListP
 
             {/* Grid */}
             {filteredTasks.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-16 border-2 border-dashed border-slate-100 rounded-2xl bg-slate-50/50">
-                    <div className="bg-white p-3 rounded-full shadow-sm mb-3">
-                        <Filter className="text-slate-300" size={24} />
+                <div className="flex flex-col items-center justify-center py-16 border-2 border-dashed border-slate-100 dark:border-slate-800 rounded-2xl bg-slate-50/50 dark:bg-slate-900/50 transition-colors">
+                    <div className="bg-white dark:bg-slate-800 p-3 rounded-full shadow-sm mb-3">
+                        <Filter className="text-slate-300 dark:text-slate-600" size={24} />
                     </div>
-                    <p className="text-slate-500 font-medium">No tasks found</p>
-                    {filter === 'mine' && <p className="text-slate-400 text-sm">Try switching to "All Tasks"</p>}
+                    <p className="text-slate-500 dark:text-slate-400 font-medium">No tasks found</p>
+                    {filter === 'mine' && <p className="text-slate-400 dark:text-slate-500 text-sm">Try switching to "All Tasks"</p>}
                 </div>
             ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">

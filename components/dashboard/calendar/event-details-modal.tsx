@@ -93,22 +93,22 @@ export function EventDetailsModal({ isOpen, onClose, onDeleted, event }: EventDe
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
             <div
-                className="bg-white rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200"
+                className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200 border border-slate-200 dark:border-slate-800"
                 onClick={(e) => e.stopPropagation()}
             >
                 {/* Header */}
-                <div className="flex items-start justify-between p-6 border-b border-slate-100 bg-slate-50/30">
+                <div className="flex items-start justify-between p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/30">
                     <div>
                         <div className={`inline-flex px-2 py-1 rounded-md text-xs font-bold uppercase tracking-wider mb-2 ${getTypeColor(event.type)}`}>
                             {event.type.replace('_', ' ')}
                         </div>
-                        <h2 className="text-xl font-bold text-slate-800 leading-snug">
+                        <h2 className="text-xl font-bold text-slate-800 dark:text-white leading-snug">
                             {event.title}
                         </h2>
                     </div>
-                    <button onClick={onClose} className="p-1 hover:bg-slate-200 rounded-full transition-colors text-slate-400">
+                    <button onClick={onClose} className="p-1 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors text-slate-400 dark:text-slate-500">
                         <X size={20} />
                     </button>
                 </div>
@@ -116,20 +116,20 @@ export function EventDetailsModal({ isOpen, onClose, onDeleted, event }: EventDe
                 {/* Content */}
                 <div className="p-6 space-y-6">
                     {/* Date & Time */}
-                    <div className="flex items-start gap-3 text-slate-600">
-                        <div className="bg-slate-100 p-2 rounded-lg text-slate-500">
+                    <div className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                        <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg text-slate-500 dark:text-slate-400">
                             <Clock size={20} />
                         </div>
                         <div>
-                            <p className="font-semibold text-slate-800">{formattedDate}</p>
-                            <p className="text-sm">{timeRange}</p>
+                            <p className="font-semibold text-slate-800 dark:text-white">{formattedDate}</p>
+                            <p className="text-sm text-slate-500 dark:text-slate-400">{timeRange}</p>
                         </div>
                     </div>
 
                     {/* Description */}
                     {event.description && (
-                        <div className="flex items-start gap-3 text-slate-600">
-                            <div className="bg-slate-100 p-2 rounded-lg text-slate-500">
+                        <div className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                            <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg text-slate-500 dark:text-slate-400">
                                 <AlignLeft size={20} />
                             </div>
                             <div className="text-sm leading-relaxed whitespace-pre-wrap">
@@ -139,20 +139,20 @@ export function EventDetailsModal({ isOpen, onClose, onDeleted, event }: EventDe
                     )}
 
                     {!event.description && (
-                        <p className="text-sm text-slate-400 italic pl-12">No description provided.</p>
+                        <p className="text-sm text-slate-400 dark:text-slate-500 italic pl-12">No description provided.</p>
                     )}
                 </div>
 
                 {/* Footer Actions */}
-                <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end gap-3 items-center">
+                <div className="p-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-800 flex justify-end gap-3 items-center">
                     {/* Only show delete for non-task events */}
                     {event.type !== 'task' && (
                         showConfirm ? (
                             <div className="flex items-center gap-2 w-full animate-in slide-in-from-right-5 duration-200">
-                                <span className="text-sm font-medium text-slate-700 flex-1">Are you sure?</span>
+                                <span className="text-sm font-medium text-slate-700 dark:text-slate-300 flex-1">Are you sure?</span>
                                 <button
                                     onClick={() => setShowConfirm(false)}
-                                    className="px-3 py-1.5 text-slate-500 hover:bg-slate-200 rounded-lg text-sm font-medium transition-colors"
+                                    className="px-3 py-1.5 text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-lg text-sm font-medium transition-colors"
                                 >
                                     Cancel
                                 </button>
@@ -167,7 +167,7 @@ export function EventDetailsModal({ isOpen, onClose, onDeleted, event }: EventDe
                             </div>
                         ) : (
                             <button
-                                className="flex items-center gap-2 px-4 py-2 text-red-600 text-sm font-medium hover:bg-red-50 rounded-lg transition-colors mr-auto"
+                                className="flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg text-sm font-medium transition-colors mr-auto"
                                 onClick={() => setShowConfirm(true)}
                             >
                                 <Trash2 size={16} />
@@ -179,7 +179,7 @@ export function EventDetailsModal({ isOpen, onClose, onDeleted, event }: EventDe
                     {!showConfirm && (
                         <button
                             onClick={onClose}
-                            className="px-4 py-2 bg-slate-200 text-slate-700 text-sm font-medium rounded-lg hover:bg-slate-300 transition-colors"
+                            className="px-4 py-2 bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm font-medium rounded-lg hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
                         >
                             Close
                         </button>

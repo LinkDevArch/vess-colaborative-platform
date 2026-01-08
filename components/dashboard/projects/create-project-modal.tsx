@@ -54,21 +54,21 @@ export function CreateProjectModal() {
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white rounded-3xl w-full max-w-lg shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 dark:bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl w-full max-w-lg shadow-2xl p-6 md:p-8 animate-in zoom-in-95 duration-200 relative border border-slate-200 dark:border-slate-800">
 
                 {/* Close Button */}
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="absolute top-6 right-6 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors"
                 >
                     <X size={24} />
                 </button>
 
-                <h2 className="text-2xl font-bold text-slate-900 mb-6">Create New Project</h2>
+                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Create New Project</h2>
 
                 {error && (
-                    <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
+                    <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-lg mb-4 text-sm">
                         {error}
                     </div>
                 )}
@@ -76,7 +76,7 @@ export function CreateProjectModal() {
                 <form action={handleSubmit} className="space-y-6">
                     {/* Name Input */}
                     <div className="space-y-2">
-                        <label htmlFor="name" className="text-sm font-semibold text-slate-700">
+                        <label htmlFor="name" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                             Project Name
                         </label>
                         <input
@@ -85,13 +85,13 @@ export function CreateProjectModal() {
                             id="name"
                             name="name"
                             placeholder="e.g. Marketing Campaign 2026"
-                            className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] focus:border-transparent transition-all"
+                            className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] focus:border-transparent transition-all placeholder:text-slate-400"
                         />
                     </div>
 
                     {/* Color Picker */}
                     <div className="space-y-2">
-                        <label className="text-sm font-semibold text-slate-700">
+                        <label className="text-sm font-semibold text-slate-700 dark:text-slate-300">
                             Card Color
                         </label>
                         <div className="flex flex-wrap gap-3">
@@ -100,7 +100,7 @@ export function CreateProjectModal() {
                                     key={color}
                                     type="button"
                                     onClick={() => setSelectedColor(color)}
-                                    className={`w-10 h-10 rounded-full transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B8E8E] ${selectedColor === color ? 'ring-2 ring-offset-2 ring-slate-400 scale-110' : ''}`}
+                                    className={`w-10 h-10 rounded-full transition-all hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B8E8E] dark:focus:ring-offset-slate-900 ${selectedColor === color ? 'ring-2 ring-offset-2 ring-slate-400 dark:ring-slate-500 scale-110' : ''}`}
                                     style={{ backgroundColor: color }}
                                     aria-label={`Select color ${color}`}
                                     aria-pressed={selectedColor === color}
@@ -111,14 +111,14 @@ export function CreateProjectModal() {
 
                     {/* Description Input */}
                     <div className="space-y-2">
-                        <label htmlFor="description" className="text-sm font-semibold text-slate-700">
-                            Description <span className="text-slate-400 font-normal">(Optional)</span>
+                        <label htmlFor="description" className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                            Description <span className="text-slate-400 dark:text-slate-500 font-normal">(Optional)</span>
                         </label>
                         <textarea
                             id="description"
                             name="description"
                             rows={3}
-                            className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] focus:border-transparent transition-all resize-none"
+                            className="w-full px-4 py-3 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] focus:border-transparent transition-all resize-none placeholder:text-slate-400"
                             placeholder="Briefly describe your project..."
                         />
                     </div>
@@ -128,7 +128,7 @@ export function CreateProjectModal() {
                         <button
                             type="button"
                             onClick={() => setIsOpen(false)}
-                            className="flex-1 py-3 px-4 rounded-lg text-slate-600 font-medium hover:bg-slate-50 transition-colors"
+                            className="flex-1 py-3 px-4 rounded-lg text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         >
                             Cancel
                         </button>

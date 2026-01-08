@@ -43,7 +43,7 @@ export function CreateTaskModal({ projectId, members }: CreateTaskModalProps) {
         return (
             <button
                 onClick={() => setIsOpen(true)}
-                className="flex items-center gap-2 bg-[#3B8E8E] hover:bg-[#2A6E6E] text-white font-medium py-2 px-4 rounded-lg transition-all shadow-sm"
+                className="flex items-center justify-center w-full sm:w-auto gap-2 bg-[#3B8E8E] hover:bg-[#2A6E6E] text-white font-medium py-2 px-4 rounded-lg transition-all shadow-sm"
             >
                 <Plus size={18} />
                 <span>Add Task</span>
@@ -52,68 +52,68 @@ export function CreateTaskModal({ projectId, members }: CreateTaskModalProps) {
     }
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white rounded-xl w-full max-w-lg shadow-2xl p-6 animate-in zoom-in-95 duration-200 relative">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 dark:bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-slate-900 rounded-xl w-full max-w-lg shadow-2xl p-6 animate-in zoom-in-95 duration-200 relative max-h-[90vh] overflow-y-auto border border-slate-200 dark:border-slate-800">
                 <button
                     onClick={() => setIsOpen(false)}
-                    className="absolute top-5 right-5 text-slate-400 hover:text-slate-600"
+                    className="absolute top-5 right-5 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300"
                 >
                     <X size={20} />
                 </button>
 
-                <h3 className="text-xl font-bold text-slate-900 mb-6">Create New Task</h3>
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">Create New Task</h3>
 
                 {error && (
-                    <div className="bg-red-50 text-red-600 p-3 rounded-lg mb-4 text-sm">
+                    <div className="bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400 p-3 rounded-lg mb-4 text-sm">
                         {error}
                     </div>
                 )}
 
                 <form action={handleSubmit} className="space-y-4">
                     <div>
-                        <label htmlFor="title" className="block text-sm font-semibold text-slate-700 mb-1">Task Title</label>
+                        <label htmlFor="title" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Task Title</label>
                         <input
                             required
                             type="text"
                             name="title"
-                            className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] transition-all"
+                            className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] transition-all placeholder:text-slate-400"
                             placeholder="What needs to be done?"
                         />
                     </div>
 
                     <div>
-                        <label htmlFor="description" className="block text-sm font-semibold text-slate-700 mb-1">Description</label>
+                        <label htmlFor="description" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Description</label>
                         <textarea
                             name="description"
                             rows={3}
-                            className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] transition-all resize-none"
+                            className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] transition-all resize-none placeholder:text-slate-400"
                             placeholder="Add some details..."
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
-                            <label htmlFor="due_date" className="text-sm font-semibold text-slate-700 mb-1 flex items-center gap-1">
+                            <label htmlFor="due_date" className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1">
                                 <CalendarIcon size={14} /> Due Date
                             </label>
                             <input
                                 type="date"
                                 name="due_date"
-                                className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]"
+                                className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] scheme-light dark:scheme-dark"
                             />
                         </div>
 
                         <div>
-                            <label htmlFor="assignee_id" className="text-sm font-semibold text-slate-700 mb-1 flex items-center gap-1">
+                            <label htmlFor="assignee_id" className="text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1 flex items-center gap-1">
                                 <User size={14} /> Assignee
                             </label>
                             <select
                                 name="assignee_id"
-                                className="w-full px-3 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] bg-white"
+                                className="w-full px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E] bg-white dark:bg-slate-950 text-slate-900 dark:text-white text-ellipsis overflow-hidden"
                             >
-                                <option value="">Unassigned</option>
+                                <option value="" className="dark:bg-slate-900">Unassigned</option>
                                 {members.map(member => (
-                                    <option key={member.id} value={member.id}>
+                                    <option key={member.id} value={member.id} className="dark:bg-slate-900">
                                         {member.full_name || 'Unknown Member'}
                                     </option>
                                 ))}
@@ -121,18 +121,18 @@ export function CreateTaskModal({ projectId, members }: CreateTaskModalProps) {
                         </div>
                     </div>
 
-                    <div className="flex items-center gap-3 pt-4 border-t border-slate-50 mt-6">
+                    <div className="flex flex-col-reverse sm:flex-row items-center gap-3 pt-4 border-t border-slate-50 dark:border-slate-800 mt-6">
                         <button
                             type="button"
                             onClick={() => setIsOpen(false)}
-                            className="flex-1 py-2.5 rounded-lg text-slate-600 font-medium hover:bg-slate-50 transition-colors"
+                            className="w-full sm:flex-1 py-2.5 rounded-lg text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
                         >
                             Cancel
                         </button>
                         <button
                             type="submit"
                             disabled={isLoading}
-                            className="flex-1 py-2.5 rounded-lg bg-[#3B8E8E] hover:bg-[#2A6E6E] text-white font-semibold shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2"
+                            className="w-full sm:flex-1 py-2.5 rounded-lg bg-[#3B8E8E] hover:bg-[#2A6E6E] text-white font-semibold shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2"
                         >
                             {isLoading ? <Loader2 size={16} className="animate-spin" /> : 'Create Task'}
                         </button>

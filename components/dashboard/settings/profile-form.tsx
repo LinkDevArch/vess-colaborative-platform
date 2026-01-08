@@ -93,23 +93,23 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-            <div className="p-6 border-b border-slate-100 bg-slate-50/50">
-                <h2 className="text-lg font-bold text-slate-800">Public Profile</h2>
-                <p className="text-sm text-slate-500">Manage how you appear to other users.</p>
+        <form onSubmit={handleSubmit} className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+            <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                <h2 className="text-lg font-bold text-slate-800 dark:text-white">Public Profile</h2>
+                <p className="text-sm text-slate-500 dark:text-slate-400">Manage how you appear to other users.</p>
             </div>
 
             <div className="p-6 space-y-6">
                 {/* Avatar Section */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-3">Profile Photo</label>
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-3">Profile Photo</label>
                     <div className="flex items-center gap-6">
                         <div className="relative group">
-                            <div className="w-24 h-24 rounded-full bg-slate-100 flex items-center justify-center border-4 border-white shadow-md overflow-hidden">
+                            <div className="w-24 h-24 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center border-4 border-white dark:border-slate-700 shadow-md overflow-hidden">
                                 {avatarUrl ? (
                                     <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                                 ) : (
-                                    <User size={40} className="text-slate-400" />
+                                    <User size={40} className="text-slate-400 dark:text-slate-500" />
                                 )}
                             </div>
                             <label className="absolute inset-0 flex items-center justify-center bg-black/40 text-white opacity-0 group-hover:opacity-100 transition-opacity rounded-full cursor-pointer">
@@ -123,21 +123,21 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
                                 />
                             </label>
                             {isUploading && (
-                                <div className="absolute inset-0 flex items-center justify-center bg-white/80 rounded-full">
+                                <div className="absolute inset-0 flex items-center justify-center bg-white/80 dark:bg-slate-900/80 rounded-full">
                                     <Loader2 size={24} className="animate-spin text-[#3B8E8E]" />
                                 </div>
                             )}
                         </div>
                         <div className="flex-1">
-                            <p className="text-sm font-medium text-slate-900 mb-1">Update your photo</p>
-                            <p className="text-xs text-slate-500 mb-3">Click on the avatar to upload. Recommended: Square JPG or PNG, at least 400x400px.</p>
+                            <p className="text-sm font-medium text-slate-900 dark:text-white mb-1">Update your photo</p>
+                            <p className="text-xs text-slate-500 dark:text-slate-400 mb-3">Click on the avatar to upload. Recommended: Square JPG or PNG, at least 400x400px.</p>
                         </div>
                     </div>
                 </div>
 
                 {/* Name Section */}
                 <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                         Full Name
                     </label>
                     <input
@@ -145,13 +145,13 @@ export function ProfileForm({ user, profile }: ProfileFormProps) {
                         type="text"
                         value={fullName}
                         onChange={(e) => setFullName(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all"
+                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all"
                         placeholder="John Doe"
                     />
                 </div>
             </div>
 
-            <div className="p-4 bg-slate-50 border-t border-slate-100 flex justify-end">
+            <div className="p-4 bg-slate-50 dark:bg-slate-900/30 border-t border-slate-100 dark:border-slate-800 flex justify-end">
                 <button
                     type="submit"
                     disabled={isSaving || isUploading}

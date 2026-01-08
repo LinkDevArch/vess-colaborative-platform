@@ -17,7 +17,7 @@ export default async function ProjectLayout({ children, params }: ProjectLayoutP
     // Fetch project details to show in header (and verify access)
     const { data: project, error } = await supabase
         .from('projects')
-        .select('id, name, color, created_by')
+        .select('id, name, color, created_by, description')
         .eq('id', id)
         .single();
 
@@ -32,21 +32,23 @@ export default async function ProjectLayout({ children, params }: ProjectLayoutP
     const isOwner = user?.id === project.created_by;
 
     return (
-        <div className="flex flex-col min-h-[calc(100vh-4rem)]">
+        <div className="flex flex-col min-h-full">
             {/* Project Header */}
             <header className="mb-6">
-                <div className="flex items-center gap-4 mb-2">
-                    <div
-                        className="w-4 h-12 rounded-full"
-                        style={{ backgroundColor: project.color }}
-                    />
-                    <div>
-                        <h1 className="text-3xl font-bold text-slate-900 tracking-tight">
-                            {project.name}
-                        </h1>
-                        <p className="text-slate-500 text-sm">
-                            Project Workspace
-                        </p>
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-2">
+                    <div className="flex items-center gap-4">
+                        <div
+                            className="w-4 h-12 rounded-full shrink-0"
+                            style={{ backgroundColor: project.color }}
+                        />
+                        <div>
+                            <h1 className="text-xl md:text-2xl font-bold text-slate-900 dark:text-white truncate pr-4">
+                                {project.name}
+                            </h1>
+                            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1 line-clamp-2 wrap-break-word max-w-2xl">
+                                {project.description || "No description provided."}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </header>

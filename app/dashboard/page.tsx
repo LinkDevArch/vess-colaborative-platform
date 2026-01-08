@@ -65,7 +65,7 @@ export default async function DashboardHome() {
                 {/* LEFT COLUMN: TASKS (66%) */}
                 <div className="lg:col-span-2 space-y-6">
                     <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                        <h2 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
                             <CheckCircle size={20} className="text-[#3B8E8E]" />
                             My Pending Tasks
                         </h2>
@@ -81,12 +81,12 @@ export default async function DashboardHome() {
                             ))}
                         </div>
                     ) : (
-                        <div className="bg-slate-50 border border-dashed border-slate-200 rounded-xl p-8 text-center">
-                            <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                        <div className="bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-200 dark:border-slate-800 rounded-xl p-8 text-center">
+                            <div className="w-12 h-12 bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded-full flex items-center justify-center mx-auto mb-3">
                                 <CheckCircle size={24} />
                             </div>
-                            <h3 className="text-slate-900 font-semibold">All caught up!</h3>
-                            <p className="text-slate-500 text-sm mt-1">You have no pending tasks assigned to you.</p>
+                            <h3 className="text-slate-900 dark:text-white font-semibold">All caught up!</h3>
+                            <p className="text-slate-500 dark:text-slate-400 text-sm mt-1">You have no pending tasks assigned to you.</p>
                         </div>
                     )}
                 </div>
@@ -94,9 +94,9 @@ export default async function DashboardHome() {
                 {/* RIGHT COLUMN: PROJECTS & QUICK LINKS (33%) */}
                 <div className="space-y-8">
                     {/* Projects */}
-                    <div className="bg-white rounded-xl border border-slate-100 shadow-sm p-5">
+                    <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm p-5">
                         <div className="flex items-center justify-between mb-4">
-                            <h2 className="text-sm font-bold text-slate-500 uppercase tracking-wider">
+                            <h2 className="text-sm font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
                                 Recent Projects
                             </h2>
                             <Link href="/dashboard/projects" className="p-1 text-slate-400 hover:text-[#3B8E8E] transition-colors">
@@ -113,8 +113,8 @@ export default async function DashboardHome() {
                             )}
                         </div>
 
-                        <div className="mt-4 pt-4 border-t border-slate-100">
-                            <Link href="/dashboard/projects" className="block text-center text-sm font-medium text-slate-600 hover:text-[#3B8E8E] transition-colors">
+                        <div className="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800">
+                            <Link href="/dashboard/projects" className="block text-center text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-[#3B8E8E] dark:hover:text-[#3B8E8E] transition-colors">
                                 View all projects
                             </Link>
                         </div>

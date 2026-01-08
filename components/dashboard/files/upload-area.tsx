@@ -44,7 +44,10 @@ export function UploadArea({ projectId }: { projectId: string }) {
         <div
             className={`
         border-2 border-dashed rounded-lg p-8 text-center transition-all cursor-pointer
-        ${isDragOver ? 'border-[#3B8E8E] bg-teal-50' : 'border-slate-200 hover:border-[#3B8E8E] hover:bg-slate-50'}
+        ${isDragOver
+                    ? 'border-[#3B8E8E] bg-teal-50 dark:bg-[#3B8E8E]/10'
+                    : 'border-slate-200 dark:border-slate-800 hover:border-[#3B8E8E] hover:bg-slate-50 dark:hover:bg-slate-900'
+                }
       `}
             onDragOver={handleDragOver}
             onDragLeave={handleDragLeave}
@@ -59,18 +62,18 @@ export function UploadArea({ projectId }: { projectId: string }) {
             />
 
             <div className="flex flex-col items-center gap-3">
-                <div className={`p-4 rounded-full ${isUploading ? 'bg-slate-100' : 'bg-[#e0f2f1]'}`}>
+                <div className={`p-4 rounded-full ${isUploading ? 'bg-slate-100 dark:bg-slate-800' : 'bg-[#e0f2f1] dark:bg-[#3B8E8E]/20'}`}>
                     {isUploading ? (
-                        <Loader2 className="animate-spin text-slate-500" size={24} />
+                        <Loader2 className="animate-spin text-slate-500 dark:text-slate-400" size={24} />
                     ) : (
                         <UploadCloud className="text-[#3B8E8E]" size={24} />
                     )}
                 </div>
                 <div>
-                    <h3 className="font-semibold text-slate-700">
+                    <h3 className="font-semibold text-slate-700 dark:text-slate-200">
                         {isUploading ? 'Uploading...' : 'Click or drag file to upload'}
                     </h3>
-                    <p className="text-sm text-slate-400 mt-1">
+                    <p className="text-sm text-slate-400 dark:text-slate-500 mt-1">
                         Documents, Images, etc.
                     </p>
                 </div>

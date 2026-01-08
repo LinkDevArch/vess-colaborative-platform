@@ -99,48 +99,48 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
     };
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
-            <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl h-[85vh] flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 dark:bg-black/70 backdrop-blur-sm animate-in fade-in duration-200">
+            <div className="bg-white dark:bg-slate-900 rounded-xl shadow-2xl w-full max-w-4xl h-[85vh] flex flex-col md:flex-row overflow-hidden animate-in zoom-in-95 duration-200 border border-slate-200 dark:border-slate-800">
 
                 {/* Close Button (Mobile) */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 md:hidden p-2 bg-slate-100 rounded-full text-slate-500 z-10"
+                    className="absolute top-4 right-4 md:hidden p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 z-10"
                 >
                     <X size={20} />
                 </button>
 
                 {/* LEFT: Task Details (65%) */}
-                <div className="flex-1 flex flex-col border-r border-slate-100 h-full overflow-hidden">
+                <div className="flex-1 flex flex-col border-r border-slate-100 dark:border-slate-800 h-full overflow-hidden">
                     {/* Header */}
-                    <div className="p-6 border-b border-slate-100 bg-slate-50/30">
+                    <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/30 dark:bg-slate-900/30">
                         <div className="flex items-start justify-between mb-4">
                             <span className={`px-3 py-1 rounded-full text-xs font-medium uppercase tracking-wider
-                                ${task.status === 'done' ? 'bg-emerald-100 text-emerald-700' :
-                                    task.status === 'in_progress' ? 'bg-blue-100 text-blue-700' :
-                                        'bg-slate-100 text-slate-600'}`}>
+                                ${task.status === 'done' ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' :
+                                    task.status === 'in_progress' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' :
+                                        'bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300'}`}>
                                 {task.status.replace('_', ' ')}
                             </span>
                         </div>
-                        <h2 className="text-2xl font-bold text-slate-800 leading-tight mb-2">
+                        <h2 className="text-2xl font-bold text-slate-800 dark:text-white leading-tight mb-2">
                             {task.title}
                         </h2>
                     </div>
 
                     {/* Scrollable Content */}
                     <div className="flex-1 overflow-y-auto p-6">
-                        <div className="prose prose-slate max-w-none">
-                            <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wide mb-3">Description</h3>
-                            <div className="text-slate-700 leading-relaxed whitespace-pre-wrap">
+                        <div className="prose prose-slate dark:prose-invert max-w-none">
+                            <h3 className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-3">Description</h3>
+                            <div className="text-slate-700 dark:text-slate-300 leading-relaxed whitespace-pre-wrap">
                                 {task.description || "No description provided."}
                             </div>
                         </div>
 
-                        <hr className="my-8 border-slate-100" />
+                        <hr className="my-8 border-slate-100 dark:border-slate-800" />
 
                         {/* Activity / Comments */}
                         <div>
-                            <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-500 uppercase tracking-wide mb-6">
+                            <h3 className="flex items-center gap-2 text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wide mb-6">
                                 <MessageCircle size={16} />
                                 Activity
                             </h3>
@@ -149,13 +149,13 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
                                 {isLoadingComments ? (
                                     <div className="text-center py-4 text-slate-400 text-sm">Loading comments...</div>
                                 ) : comments.length === 0 ? (
-                                    <div className="text-center py-8 text-slate-400 italic bg-slate-50 rounded-xl border border-dashed border-slate-200">
+                                    <div className="text-center py-8 text-slate-400 italic bg-slate-50 dark:bg-slate-800/30 rounded-xl border border-dashed border-slate-200 dark:border-slate-700">
                                         No comments yet. Start the conversation!
                                     </div>
                                 ) : (
                                     comments.map((comment) => (
                                         <div key={comment.id} className="flex gap-4 group">
-                                            <div className="w-8 h-8 rounded-full bg-slate-200 overflow-hidden shrink-0">
+                                            <div className="w-8 h-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden shrink-0">
                                                 {comment.profiles?.avatar_url ? (
                                                     <img src={comment.profiles.avatar_url} alt="" className="w-full h-full object-cover" />
                                                 ) : (
@@ -166,14 +166,14 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
                                             </div>
                                             <div className="flex-1">
                                                 <div className="flex items-baseline gap-2 mb-1">
-                                                    <span className="font-semibold text-slate-800 text-sm">
+                                                    <span className="font-semibold text-slate-800 dark:text-slate-200 text-sm">
                                                         {comment.profiles?.full_name || 'Unknown User'}
                                                     </span>
-                                                    <span className="text-xs text-slate-400">
+                                                    <span className="text-xs text-slate-400 dark:text-slate-500">
                                                         {new Date(comment.created_at).toLocaleString()}
                                                     </span>
                                                 </div>
-                                                <div className="text-slate-700 text-sm bg-slate-50 p-3 rounded-r-xl rounded-bl-xl inline-block border border-slate-100">
+                                                <div className="text-slate-700 dark:text-slate-300 text-sm bg-slate-50 dark:bg-slate-800 p-3 rounded-r-xl rounded-bl-xl inline-block border border-slate-100 dark:border-slate-700">
                                                     {comment.content}
                                                 </div>
                                             </div>
@@ -186,14 +186,14 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
                     </div>
 
                     {/* Comment Input (Fixed Bottom) */}
-                    <div className="p-4 bg-white border-t border-slate-100">
+                    <div className="p-4 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800">
                         <form onSubmit={handleSendComment} className="flex gap-2">
                             <input
                                 type="text"
                                 value={newComment}
                                 onChange={(e) => setNewComment(e.target.value)}
                                 placeholder="Write a comment..."
-                                className="flex-1 px-4 py-2.5 bg-slate-50 border-slate-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all"
+                                className="flex-1 px-4 py-2.5 bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] text-slate-900 dark:text-white transition-all placeholder:text-slate-400"
                             />
                             <button
                                 type="submit"
@@ -207,10 +207,10 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
                 </div>
 
                 {/* RIGHT: Sidebar (35%) */}
-                <div className="w-full md:w-[350px] bg-slate-50/50 p-6 flex flex-col gap-6 overflow-y-auto">
+                <div className="w-full md:w-[350px] bg-slate-50/50 dark:bg-slate-950/20 p-6 flex flex-col gap-6 overflow-y-auto border-t md:border-t-0 md:border-l border-slate-100 dark:border-slate-800">
                     {/* Desktop Close */}
                     <div className="hidden md:flex justify-end">
-                        <button onClick={onClose} className="p-2 hover:bg-slate-200 rounded-full text-slate-400 hover:text-slate-600 transition-colors">
+                        <button onClick={onClose} className="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
                             <X size={24} />
                         </button>
                     </div>
@@ -220,10 +220,10 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
 
                         {/* Status */}
                         <div>
-                            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">
+                            <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">
                                 Status
                             </label>
-                            <div className="flex items-center gap-2 text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
                                 {task.status === 'done' ? <CheckCircle size={18} className="text-emerald-500" /> : <Clock size={18} className="text-blue-500" />}
                                 <span className="capitalize">{task.status.replace('_', ' ')}</span>
                             </div>
@@ -231,20 +231,20 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
 
                         {/* Assignee */}
                         <div>
-                            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">
+                            <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">
                                 Assignee
                             </label>
-                            <div className="flex items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
-                                <div className="w-8 h-8 rounded-full bg-slate-100 overflow-hidden">
+                            <div className="flex items-center gap-3 bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
+                                <div className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
                                     {task.assignee?.avatar_url ? (
                                         <img src={task.assignee.avatar_url} alt="" className="w-full h-full object-cover" />
                                     ) : (
-                                        <div className="w-full h-full flex items-center justify-center bg-indigo-100 text-indigo-600">
+                                        <div className="w-full h-full flex items-center justify-center bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400">
                                             <User size={16} />
                                         </div>
                                     )}
                                 </div>
-                                <span className="text-sm font-medium text-slate-700">
+                                <span className="text-sm font-medium text-slate-700 dark:text-slate-200">
                                     {task.assignee?.full_name || 'Unassigned'}
                                 </span>
                             </div>
@@ -252,10 +252,10 @@ export function TaskDetailsModal({ task, currentUserId, onClose, projectId }: Ta
 
                         {/* Due Date */}
                         <div>
-                            <label className="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2 block">
+                            <label className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 block">
                                 Due Date
                             </label>
-                            <div className="flex items-center gap-2 text-slate-700 bg-white p-3 rounded-lg border border-slate-200 shadow-sm">
+                            <div className="flex items-center gap-2 text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-900 p-3 rounded-lg border border-slate-200 dark:border-slate-700 shadow-sm">
                                 <Calendar size={18} className="text-slate-400" />
                                 <span className="text-sm">
                                     {task.due_date ? new Date(task.due_date).toLocaleDateString() : 'No due date'}

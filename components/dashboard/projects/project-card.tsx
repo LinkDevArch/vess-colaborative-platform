@@ -18,7 +18,7 @@ export function ProjectCard({ id, name, color, members }: ProjectCardProps) {
     return (
         <Link href={`/dashboard/projects/${id}`} className="block h-full">
             <article
-                className="group relative bg-white border border-slate-200 rounded-lg p-5 h-48 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:border-slate-300 hover:-translate-y-0.5"
+                className="group relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg p-5 h-48 flex flex-col justify-between transition-all duration-200 hover:shadow-md hover:border-slate-300 dark:hover:border-slate-700 hover:-translate-y-0.5"
             >
                 {/* Colored Accent Line */}
                 <div
@@ -40,18 +40,18 @@ export function ProjectCard({ id, name, color, members }: ProjectCardProps) {
 
                 {/* Content */}
                 <div>
-                    <h3 className="text-slate-800 text-lg font-bold tracking-tight mb-1 truncate group-hover:text-[#3B8E8E] transition-colors" title={name}>
+                    <h3 className="text-slate-800 dark:text-slate-100 text-lg font-bold tracking-tight mb-1 truncate group-hover:text-[#3B8E8E] dark:group-hover:text-[#3B8E8E] transition-colors" title={name}>
                         {name}
                     </h3>
                 </div>
 
                 {/* Footer / Members */}
-                <div className="pt-4 border-t border-slate-50 flex items-center justify-between">
+                <div className="pt-4 border-t border-slate-50 dark:border-slate-800 flex items-center justify-between">
                     <div className="flex -space-x-2">
                         {members.slice(0, 4).map((member, i) => (
                             <div
                                 key={member.id || i}
-                                className="w-8 h-8 rounded-full border-2 border-white bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-500 overflow-hidden"
+                                className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-[10px] font-bold text-slate-500 dark:text-slate-400 overflow-hidden"
                                 title={member.full_name || 'Member'}
                             >
                                 {member.avatar_url ? (
@@ -64,13 +64,13 @@ export function ProjectCard({ id, name, color, members }: ProjectCardProps) {
                             </div>
                         ))}
                         {members.length > 4 && (
-                            <div className="w-8 h-8 rounded-full border-2 border-white bg-slate-50 flex items-center justify-center text-[10px] font-medium text-slate-500">
+                            <div className="w-8 h-8 rounded-full border-2 border-white dark:border-slate-900 bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-[10px] font-medium text-slate-500 dark:text-slate-400">
                                 +{members.length - 4}
                             </div>
                         )}
                     </div>
 
-                    <div className="flex items-center gap-1.5 text-slate-400 group-hover:text-[#3B8E8E] transition-colors">
+                    <div className="flex items-center gap-1.5 text-slate-400 dark:text-slate-500 group-hover:text-[#3B8E8E] dark:group-hover:text-[#3B8E8E] transition-colors">
                         <Users size={16} />
                         <span className="text-xs font-semibold">{members.length}</span>
                     </div>

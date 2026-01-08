@@ -33,7 +33,7 @@ export default async function ChatPage({ params }: { params: Promise<{ id: strin
     return (
         <div className="px-4 md:px-6">
             <div className="flex items-center justify-between mb-6">
-                <h2 className="text-2xl font-bold text-slate-800">Team Chat</h2>
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Team Chat</h2>
             </div>
 
             <ChatInterface

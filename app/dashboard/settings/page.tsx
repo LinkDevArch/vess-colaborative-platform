@@ -23,12 +23,12 @@ export default async function UserSettingsPage() {
             {/* Header */}
             <div className="mb-8">
                 <div className="flex items-center gap-3 mb-2">
-                    <div className="bg-slate-100 p-2 rounded-lg text-slate-600">
+                    <div className="bg-slate-100 dark:bg-slate-800 p-2 rounded-lg text-slate-600 dark:text-slate-400">
                         <Settings size={24} />
                     </div>
                     <div>
-                        <h1 className="text-2xl font-bold text-slate-800">Account Settings</h1>
-                        <p className="text-slate-500">Manage your profile and security preferences.</p>
+                        <h1 className="text-2xl font-bold text-slate-800 dark:text-white">Account Settings</h1>
+                        <p className="text-slate-500 dark:text-slate-400">Manage your profile and security preferences.</p>
                     </div>
                 </div>
             </div>
@@ -36,18 +36,18 @@ export default async function UserSettingsPage() {
             <div className="grid grid-cols-1 gap-12">
                 {/* Profile Section */}
                 <section id="profile" className="scroll-mt-24">
-                    <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
                         <User size={20} className="text-[#3B8E8E]" />
                         Profile Information
                     </h3>
                     <ProfileForm user={user} profile={profile} />
                 </section>
 
-                <div className="h-px bg-slate-200" />
+                <div className="h-px bg-slate-200 dark:bg-slate-800" />
 
                 {/* Security Section */}
                 <section id="security" className="scroll-mt-24">
-                    <h3 className="text-lg font-semibold text-slate-800 mb-4 flex items-center gap-2">
+                    <h3 className="text-lg font-semibold text-slate-800 dark:text-white mb-4 flex items-center gap-2">
                         <Shield size={20} className="text-[#3B8E8E]" />
                         Security
                     </h3>

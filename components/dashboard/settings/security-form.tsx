@@ -75,16 +75,16 @@ export function SecurityForm({ user }: SecurityFormProps) {
     return (
         <div className="space-y-8">
             {/* Email Section */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div className="p-6 border-b border-slate-100 bg-slate-50/50">
-                    <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        <Mail size={18} className="text-slate-500" />
+            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                        <Mail size={18} className="text-slate-500 dark:text-slate-400" />
                         Email Address
                     </h2>
-                    <p className="text-sm text-slate-500">Change your account email address.</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Change your account email address.</p>
                 </div>
                 <div className="p-6">
-                    <div className="mb-6 p-4 bg-blue-50 border border-blue-100 rounded-lg flex gap-3 text-blue-700 text-sm">
+                    <div className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-900/30 rounded-lg flex gap-3 text-blue-700 dark:text-blue-300 text-sm">
                         <AlertTriangle size={20} className="shrink-0" />
                         <p>
                             For security, changing your email requires confirming the action via a link sent to <strong>both</strong> your old and new email addresses.
@@ -93,22 +93,22 @@ export function SecurityForm({ user }: SecurityFormProps) {
 
                     <form onSubmit={handleEmailUpdate} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Current Email</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Current Email</label>
                             <input
                                 type="text"
                                 value={user.email}
                                 disabled
-                                className="w-full px-4 py-2 rounded-lg border border-slate-200 bg-slate-50 text-slate-500 cursor-not-allowed"
+                                className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 text-slate-500 dark:text-slate-400 cursor-not-allowed"
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">New Email</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">New Email</label>
                             <input
                                 type="email"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="new@example.com"
-                                className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E]"
+                                className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all placeholder:text-slate-400"
                                 required
                             />
                         </div>
@@ -116,7 +116,7 @@ export function SecurityForm({ user }: SecurityFormProps) {
                             <button
                                 type="submit"
                                 disabled={isEmailLoading || !email}
-                                className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-all disabled:opacity-50"
+                                className="flex items-center gap-2 bg-slate-900 dark:bg-[#3B8E8E] text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 dark:hover:bg-[#2A6E6E] transition-all disabled:opacity-50"
                             >
                                 {isEmailLoading && <Loader2 size={16} className="animate-spin" />}
                                 Update Email
@@ -127,35 +127,35 @@ export function SecurityForm({ user }: SecurityFormProps) {
             </div>
 
             {/* Password Section */}
-            <div className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
-                <div className="p-6 border-b border-slate-100 bg-slate-50/50">
-                    <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-                        <Lock size={18} className="text-slate-500" />
+            <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+                <div className="p-6 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                    <h2 className="text-lg font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                        <Lock size={18} className="text-slate-500 dark:text-slate-400" />
                         Change Password
                     </h2>
-                    <p className="text-sm text-slate-500">Update your password to keep your account secure.</p>
+                    <p className="text-sm text-slate-500 dark:text-slate-400">Update your password to keep your account secure.</p>
                 </div>
                 <div className="p-6">
                     <form onSubmit={handlePasswordUpdate} className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">New Password</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">New Password</label>
                             <input
                                 type="password"
                                 value={newPassword}
                                 onChange={(e) => setNewPassword(e.target.value)}
-                                className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E]"
+                                className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all placeholder:text-slate-400"
                                 placeholder="••••••••"
                                 minLength={6}
                                 required
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-slate-700 mb-2">Confirm New Password</label>
+                            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">Confirm New Password</label>
                             <input
                                 type="password"
                                 value={confirmPassword}
                                 onChange={(e) => setConfirmPassword(e.target.value)}
-                                className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E]"
+                                className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all placeholder:text-slate-400"
                                 placeholder="••••••••"
                                 required
                             />
@@ -164,7 +164,7 @@ export function SecurityForm({ user }: SecurityFormProps) {
                             <button
                                 type="submit"
                                 disabled={isPasswordLoading || !newPassword || !confirmPassword}
-                                className="flex items-center gap-2 bg-slate-900 text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 transition-all disabled:opacity-50"
+                                className="flex items-center gap-2 bg-slate-900 dark:bg-[#3B8E8E] text-white px-4 py-2 rounded-lg font-medium hover:bg-slate-800 dark:hover:bg-[#2A6E6E] transition-all disabled:opacity-50"
                             >
                                 {isPasswordLoading && <Loader2 size={16} className="animate-spin" />}
                                 Update Password

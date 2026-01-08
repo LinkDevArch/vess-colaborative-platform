@@ -46,15 +46,15 @@ export function ProjectDetailsForm({ projectId, initialName, initialColor }: Pro
     };
 
     return (
-        <div className="bg-white rounded-lg shadow-xs border border-slate-200 overflow-hidden mb-8">
-            <div className="p-4 border-b border-slate-100 bg-slate-50/50">
-                <h3 className="font-semibold text-slate-800">Project Details</h3>
+        <div className="bg-white dark:bg-slate-900 rounded-lg shadow-xs border border-slate-200 dark:border-slate-800 overflow-hidden mb-8">
+            <div className="p-4 border-b border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+                <h3 className="font-semibold text-slate-800 dark:text-white">Project Details</h3>
             </div>
 
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
                 {/* Name Input */}
                 <div>
-                    <label htmlFor="projectName" className="block text-sm font-medium text-slate-700 mb-2">
+                    <label htmlFor="projectName" className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                         Project Name
                     </label>
                     <input
@@ -62,7 +62,7 @@ export function ProjectDetailsForm({ projectId, initialName, initialColor }: Pro
                         type="text"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all"
+                        className="w-full px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-950 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-[#3B8E8E]/20 focus:border-[#3B8E8E] transition-all"
                         placeholder="My Awesome Project"
                         required
                     />
@@ -70,7 +70,7 @@ export function ProjectDetailsForm({ projectId, initialName, initialColor }: Pro
 
                 {/* Color Picker */}
                 <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
+                    <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-2">
                         Project Color
                     </label>
                     <div className="flex flex-wrap gap-3">
@@ -80,7 +80,7 @@ export function ProjectDetailsForm({ projectId, initialName, initialColor }: Pro
                                 type="button"
                                 onClick={() => setColor(c.hex)}
                                 className={`w-8 h-8 rounded-full ${c.className} transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#3B8E8E] flex items-center justify-center
-                                    ${color === c.hex ? 'ring-2 ring-offset-2 ring-slate-400 scale-110' : ''}
+                                    ${color === c.hex ? 'ring-2 ring-offset-2 dark:ring-offset-slate-900 ring-slate-400 scale-110' : ''}
                                 `}
                                 title={c.name}
                             >
@@ -92,7 +92,7 @@ export function ProjectDetailsForm({ projectId, initialName, initialColor }: Pro
 
                 {/* Feedback Message */}
                 {message && (
-                    <div className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'
+                    <div className={`p-3 rounded-lg text-sm flex items-center gap-2 ${message.type === 'success' ? 'bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400' : 'bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400'
                         }`}>
                         {message.type === 'success' ? <Check size={16} /> : <AlertCircle size={16} />}
                         {message.text}

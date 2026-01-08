@@ -33,10 +33,10 @@ export default async function SettingsPage({ params }: { params: Promise<{ id: s
         .eq('project_id', id);
 
     return (
-        <div className="px-4 md:px-6 max-w-3xl mx-auto">
+        <div className="px-4 md:px-6 max-w-3xl mx-auto w-full overflow-x-hidden">
             <div className="mb-8">
-                <h2 className="text-2xl font-bold text-slate-800">Project Settings</h2>
-                <p className="text-slate-500">Manage your team and project configuration.</p>
+                <h2 className="text-2xl font-bold text-slate-800 dark:text-white">Project Settings</h2>
+                <p className="text-slate-500 dark:text-slate-400">Manage your team and project configuration.</p>
             </div>
 
             <ProjectDetailsForm
